@@ -1,0 +1,11 @@
+@startuml
+actor C as "Customer"
+actor M as "Merchant"
+actor PG as "Payment Gateway"
+
+C -> M : Order information
+M --> C : Pricing information ({Pricing information, h(Order information), Order information}(inv(pk(M))))
+C -> PG : Type of order, pricing and payment information ()
+PG -> M : Notifies of successful payment
+M -> C : Sends order confirmation
+@enduml

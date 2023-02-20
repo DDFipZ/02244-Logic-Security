@@ -1,0 +1,7 @@
+@startuml Logic for security
+start
+:Customer sends order to merchant;
+:Merchant returns pricing information;
+:Customer sends some version of the order, pricing information and payment information;
+end
+@enduml
