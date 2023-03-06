@@ -1,0 +1,32 @@
+Protocol: OrderProtV4
+
+Types:
+Agent M,C,p;
+Number Order,CreditCardInfo,Price,g,X,Y;
+Function sk,pk,exp;
+
+Knowledge:
+M: M,C,p,pk(C),inv(pk(M)),pk(p),exp, g;
+C: M,C,p,sk(C,p),pk(C),inv(pk(C)),pk(M),pk(p),exp, g;
+p: M,C,p,sk(C,p),pk(p),inv(pk(p)),pk(M),exp;
+
+Actions:
+
+C -> M : {C, M, exp(g,Y)}inv(pk(C))
+M -> C : {C, M, exp(g,X)}inv(pk(M))
+C -> M : {|C, M, Order|}exp(exp(g,X),Y)
+M -> C : {|C, M, Price,Order|}exp(exp(g,X),Y)
+C -> p : {Order}exp(exp(g,X),Y),{|Price,CreditCardInfo|}sk(C,p)
+p -> M : {Order}exp(exp(g,X),Y),{|Price,CreditCardInfo|}sk(C,p)
+M -> C : {|Order,{Price,CreditCardInfo}sk(C,p)|}exp(exp(g,X),Y)
+
+Goals:
+
+C authenticates M on exp(exp(g,X),Y),Order
+M authenticates C on exp(exp(g,X),Y),Price,Order
+exp(exp(g,X),Y) secret between C,M
+Price,Order secret between C,M
+CreditCardInfo secret between C,p
+
+
+

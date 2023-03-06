@@ -1,0 +1,19 @@
+@startuml
+<Style>
+sequenceDiagram {
+    Lifeline {
+        linestyle solid
+    }
+}
+</Style>
+participant C as "C"
+participant M as "M"
+participant p as "p"
+
+C o->o M : {Order}inv(pk(C))
+M o->o C : {Price,Order}inv(pk(M))
+C o->o p : {Order}pk(M),{Price,CreditCardInfo}sk(C,p)
+p o->o M : {Order}pk(M),{Price,CreditCardInfo}sk(C,p)
+M o->o C : Order,{Price,CreditCardInfo}sk(C,p)
+
+@enduml
