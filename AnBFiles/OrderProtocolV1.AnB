@@ -1,0 +1,26 @@
+Protocol: OrderProt1
+
+Types:
+Agent M,C,p;
+Number Order,CreditCardInfo,Price;
+Function sk,pk,hash;
+
+Knowledge:
+M: M,C,p,pk(C),inv(pk(M)),pk(p),hash;
+C: M,C,p,sk(C,p),pk(C),inv(pk(C)),pk(M),pk(p),hash;
+p: M,C,p,sk(C,p),pk(p),inv(pk(p)),pk(M),hash;
+
+Actions:
+
+C -> M : {Order}inv(pk(C))
+M -> C : {Price,hash(Order),Order}inv(pk(M))
+C -> p : {Price,hash(Order),Order}inv(pk(M)),{CreditCardInfo}sk(C,p)
+p -> M : Price,hash(Order),Order,{CreditCardInfo}sk(C,p)
+M -> C : Price,hash(Order),Order,{CreditCardInfo}sk(C,p)
+
+Goals:
+
+
+Order secret between C,M
+
+
