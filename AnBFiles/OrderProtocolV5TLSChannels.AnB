@@ -12,8 +12,8 @@ p: M,C,p,sk(C,p),pk(p),inv(pk(p)),pk(M);
 
 Actions:
 
-C *-> M : C,M,exp(g,Y)
-M *-> C : C,M,exp(g,X),exp(g,Y)
+C *-> M : exp(g,Y)
+M *-> C : exp(g,X)
 C -> M : {|C, M, Order|}exp(exp(g,X),Y)
 M -> C : {|C, M, Price,Order|}exp(exp(g,X),Y)
 C -> p : C,{|C, M, Price,Order|}exp(exp(g,X),Y),{|Price,CreditCardInfo,RandomNonce,C|}sk(C,p)
