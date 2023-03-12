@@ -22,11 +22,12 @@ M -> C : {|C, M, Order,{|Price,CreditCardInfo|}sk(C,p)|}exp(exp(g,X),Y)
 
 Goals:
 
-C authenticates M on exp(exp(g,X),Y),Order
-M authenticates C on exp(exp(g,X),Y),Price,Order
+C authenticates M on exp(exp(g,X),Y),Price,Order
+M authenticates C on exp(exp(g,X),Y),Order
 exp(exp(g,X),Y) secret between C,M
 Order secret between C,M
 CreditCardInfo secret between C,p
+
 
 
 
