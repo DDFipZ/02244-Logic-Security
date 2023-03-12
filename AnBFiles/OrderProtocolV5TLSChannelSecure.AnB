@@ -1,0 +1,29 @@
+Protocol: OrderProtV5SecureChannel
+
+Types:
+Agent M,C,p;
+Number Order,CreditCardInfo,Price,g,X,Y;
+Function sk,pk;
+
+Knowledge:
+M: M,C,p,pk(C),inv(pk(M)),pk(p), g;
+C: M,C,p,sk(C,p),pk(C),inv(pk(C)),pk(M),pk(p), g;
+p: M,C,p,sk(C,p),pk(p),inv(pk(p)),pk(M);
+
+Actions:
+
+C *->* M : C,M,Order
+M *->* C : C,M,Price,Order
+C -> p : {|Price,CreditCardInfo|}sk(C,p)
+p -> M : {{|Price,CreditCardInfo|}sk(C,p)}inv(pk(p))
+M *->* C : Order,{|Price,CreditCardInfo|}sk(C,p)
+
+Goals:
+
+
+Order secret between C,M
+CreditCardInfo secret between C,p
+
+
+
+
