@@ -18,7 +18,7 @@ C -> M : {|C, M, Order|}exp(exp(g,X),Y)
 M -> C : {|C, M, Price,Order|}exp(exp(g,X),Y)
 C -> p : {|C, M, Order|}exp(exp(g,X),Y),{|Price,CreditCardInfo|}sk(C,p)
 p -> M : {|C, M, Order|}exp(exp(g,X),Y),{{|Price,CreditCardInfo|}sk(C,p)}inv(pk(p))
-M -> C : {|Order,{Price,CreditCardInfo}sk(C,p)|}exp(exp(g,X),Y)
+M -> C : {|C, M, Order,{Price,CreditCardInfo}sk(C,p)|}exp(exp(g,X),Y)
 
 Goals:
 
