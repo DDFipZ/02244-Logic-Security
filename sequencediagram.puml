@@ -1,11 +1,20 @@
 @startuml
-actor C as "Customer"
-actor M as "Merchant"
-actor PG as "Payment Gateway"
+<STYLE>
+sequenceDiagram {
+    Lifeline {
+      linecolor black
+      lineThickness 2
+    }
+}
+</STYLE>
+
+participant C as "Customer"
+participant M as "Merchant" 
+participant PG as "Payment Gateway"
 
 C -> M : Order information
 M --> C : Pricing information ({Pricing information, h(Order information), Order information}(inv(pk(M))))
-C -> PG : Type of order, pricing and payment information ()
+C o-[#black]->o PG : Type of order, pricing and payment information ()
 PG -> M : Notifies of successful payment
 M -> C : Sends order confirmation
 @enduml
