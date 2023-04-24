@@ -1,0 +1,13 @@
+@startuml
+
+actor w as "Watch"
+actor c as "Controller"
+actor b as "Backend"
+
+w -> c : "Send heart rate information"
+c -> b : "Store heart rate information"
+b -> c : "Send success message"
+c -> w : "Send success message"
+
+
+@enduml

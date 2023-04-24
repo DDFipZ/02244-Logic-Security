@@ -1,0 +1,14 @@
+@startuml
+
+actor f as "Friend"
+actor c as "Controller"
+actor b as "Backend"
+
+f -> c : Request to see information on friend
+c -> c : Checks if friend can see information
+c -> b : Request to see information on friend
+b --> c : Return information on friend
+c --> f : Return information on friend
+
+' Create a private variable that cannot be calculated from public variables'
+@enduml
