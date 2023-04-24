@@ -1,4 +1,4 @@
-Protocol: OrderProtV4
+Protocol: OrderProtV5
 
 Types:
 Agent M,C,p;
@@ -16,15 +16,21 @@ C -> M : {C, M, exp(g,Y)}inv(pk(C))
 M -> C : {C, M, exp(g,X)}inv(pk(M))
 C -> M : {|C, M, Order|}exp(exp(g,X),Y)
 M -> C : {|C, M, Price,Order|}exp(exp(g,X),Y)
-C -> p : {Order}exp(exp(g,X),Y),{|Price,CreditCardInfo|}sk(C,p)
-p -> M : {Order}exp(exp(g,X),Y),{|Price,CreditCardInfo|}sk(C,p)
-M -> C : {|Order,{|Price,CreditCardInfo|}sk(C,p)|}exp(exp(g,X),Y)
+C -> p : C,{|C, M, Price,Order|}exp(exp(g,X),Y),{|Price,CreditCardInfo,RandomNonce,C|}sk(C,p)
+p -> M : C,{|C, M, Price,Order|}exp(exp(g,X),Y),{{|Price,CreditCardInfo,RandomNonce,C|}sk(C,p)}inv(pk(p))
+M -> C : C,{|C, M, Price,Order,{|Price,CreditCardInfo,RandomNonce,C|}sk(C,p)|}exp(exp(g,X),Y)
 
 Goals:
 
-C authenticates M on exp(exp(g,X),Y),Price,Order
-M authenticates C on exp(exp(g,X),Y),Order
+C authenticates M on exp(exp(g,X),Y)
+M authenticates C on exp(exp(g,X),Y)
+
+C authenticates M on Price,Order,C
 exp(exp(g,X),Y) secret between C,M
 Order secret between C,M
 CreditCardInfo secret between C,p
+
+
+
+
 

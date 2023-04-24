@@ -1,0 +1,22 @@
+@startuml
+<Style>
+sequenceDiagram {
+    Lifeline {
+        linestyle solid
+    }
+}
+</Style>
+
+participant C as "C"
+participant M as "M"
+participant p as "p"
+
+C -> M : {C, M, exp(g,Y)}inv(pk(C))
+M -> C : {C, M, exp(g,X)}inv(pk(M))
+C -> M : {|f1(C, M, Order)|}exp(exp(g,X),Y)
+M -> C : {|f2(C, M, Price,Order)|}exp(exp(g,X),Y)
+C -> p : C,{|C, M, Price,Order|}exp(exp(g,X),Y),{|Price,CreditCardInfo,RandomNonce,C|}sk(C,p)
+p -> M : C,{|C, M, Price,Order|}exp(exp(g,X),Y),{{|Price,CreditCardInfo,RandomNonce,C|}sk(C,p)}inv(pk(p))
+M -> C : C,{|C, M, Price,Order,{|Price,CreditCardInfo,RandomNonce,C|}sk(C,p)|}exp(exp(g,X),Y)
+
+@enduml
