@@ -1,0 +1,8 @@
+@startuml
+
+:Runner's raw information {W : W, S};
+:Runner's extracted information {S : S, A.1};
+:See kilometercount {S : S, A.1, A.2, A.3};
+:See total team kilometers {S: S, A.1, A.2, A.3, B.1, B.2, B.3};
+
+@enduml

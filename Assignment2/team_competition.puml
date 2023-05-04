@@ -1,0 +1,15 @@
+@startuml
+actor TA1 as "A,1"
+actor TA as "Team A"
+actor TB as "Team B"
+actor S as "Server"
+
+TA -> S : lookup_result(TB)
+S --> TA : returns total km
+TA1 -> S : lookup_teamplayer(ID, TA2)
+S --> TA1 : return teamplayer info {S : S, TA1, TA2, TA3}
+TB -> S : Get Information on TA
+S -> S : Calculate total km for team A
+S -> TB : Sends declassified total km from team A {S : TB}
+
+@enduml

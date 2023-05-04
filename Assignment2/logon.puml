@@ -1,0 +1,17 @@
+@startuml
+actor F as "Friend"
+actor R as "Runner"
+actor W as "Watch"
+actor S as "Server"
+
+R -> W : Initiates run
+W -> W : Records data
+R -> W : Stops run
+W -> S : Sends sensor data from run {W : W, S, R}
+F -> S : Lookup result
+S --> F : Return results {S : S, F} 
+
+'Personal information:'
+    'arr[runningtrips]'
+    'name, 
+@enduml
