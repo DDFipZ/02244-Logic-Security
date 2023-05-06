@@ -1,6 +1,5 @@
 const readline = require('readline');
 const SportsTracker = require("./Sport_Tracker");
-const User = require('./User');
 const StatisticsCalculator = require('./Statistics_Calculator');
 const Server = require('./Server');
 
@@ -34,7 +33,7 @@ async function getInput() {
         case 'SeeStats':
           var myUserId = inputArray[1];
           var friendUserId = inputArray[2];
-          console.log(statisticsCalculator.seeRunnerStats(myUserId, friendUserId));
+          statisticsCalculator.seeRunnerStats(myUserId, friendUserId);
           break;
         case 'DTS':
           var myUserId = inputArray[1];

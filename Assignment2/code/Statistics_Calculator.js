@@ -37,9 +37,9 @@ class StatisticsCalculator {
         });
 
         if(user.teamId == otherUser.teamId){
-            return otherUser.runs;
+            console.log(otherUser.runs);
         } else {
-            return 'This user either does not exist or you do not have access';
+            console.log('This user either does not exist or you do not have access');
         }
     }
 
